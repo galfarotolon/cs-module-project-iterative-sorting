@@ -1,26 +1,62 @@
-# TO-DO: Complete the selection_sort() function below
+# runtime: O(n * n) = O(n^2)
 def selection_sort(arr):
-    # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
+    # iterate through the array (represents the sorted-unsorted boundary 
+    # moving across the array)
+    for i in range(len(arr)):  # O(n)
+        # index of the boundary, as well as the index we're going to 
+        # swap the smallest element with 
+        boundary = i
 
+        smallest_value = arr[boundary]
+        smallest_index = boundary
+        # finding the smallest element 
+        # in the "unsorted" portion of the array 
+        for unsorted_index in range(boundary, len(arr)):  # O(n)
+            if arr[unsorted_index] < smallest_value:
+                smallest_value = arr[unsorted_index]
+                smallest_index = unsorted_index
 
-        # TO-DO: swap
-        # Your code here
+        # `smallest_index` is the index of the smallest element in the unsorted portion 
+
+        # once that's found, swap it with the element on the right edge 
+        # of the sorted-unsorted boundary 
+
+        arr[boundary], arr[smallest_index] = arr[smallest_index], arr[boundary]
 
     return arr
+
+
+
+
+
+  
+      
+          
+
 
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # Your code here
+    # store last index
+    last_index = len(arr) - 1
+    # while last index is not 0:
+    while last_index > 0:
+          # loop from 0 to last index:
+        for i in range(last_index):
+            curr_num = arr[i]
+            next_num = arr[i + 1]
 
-
+              # if cur is greater that next
+            if curr_num > next_num:
+                  # switch current and next values
+                arr[i] = next_num
+                arr[i+1] = curr_num
+        # change last index - 1
+        last_index -= 1
+    # return array
     return arr
+
+
 
 '''
 STRETCH: implement the Counting Sort function below
